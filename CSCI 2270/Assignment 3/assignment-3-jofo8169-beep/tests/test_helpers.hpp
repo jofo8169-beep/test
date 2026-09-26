@@ -10,7 +10,6 @@
 using namespace std;
 
 // TODO add detailed explanation on what the function should do
-//THey are helper functions that the tests use to run code and check the output against what is actually expected.
 std::string exec(const char* cmd);
 std::string readFileIntoString(std::string fileName);
 string test_append(int totalElements, string expected_output);

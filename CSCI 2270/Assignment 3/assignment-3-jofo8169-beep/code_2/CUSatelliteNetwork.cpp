@@ -36,31 +36,6 @@ CUSatelliteNetwork::CUSatelliteNetwork() {
  */
 void CUSatelliteNetwork::addSatelliteInfo(string previous, string satelliteName, int distance) {
     // TODO
-    CUSatellite* newNode = new CUSatellite; 
-    newNode->name = satelliteName;
-    newNode->distanceFromEarth = distance;
-    newNode->numberMessages =0;
-    newNode->message = "";
-    if(previous == "") {
-        newNode->next = head;
-        head = newNode;
-        cout << "adding: " << satelliteName << " (HEAD)" <<endl;
-    }else{
-        CUSatellite* previousNode = head;
-        while(previousNode != nullptr && previousNode->name !=previous) {
-            previousNode = previousNode->next;
-        }
-            if(previousNode == nullptr){
-                cout<< "Cannot add new node; previous node not found\n" << endl;
-                delete newNode;
-                return;
-            }
-            newNode->next = previousNode->next;
-            previousNode->next = newNode;
-            cout << "adding: "<<satelliteName << " (prev: " <<previousNode->name << ")" << endl;
-        
-
-    }
 }
 
 
@@ -72,13 +47,6 @@ void CUSatelliteNetwork::addSatelliteInfo(string previous, string satelliteName,
 
 void CUSatelliteNetwork::loadDefaultSetup(){
     // TODO 
-    addSatelliteInfo("", "MAVEN", 9);
-    addSatelliteInfo("", "JUNO", 4);
-    addSatelliteInfo("", "PIONEER", 5);
-    addSatelliteInfo("", "GALILEO", 6);
-    addSatelliteInfo("", "KEPLER", 10);
-    addSatelliteInfo("", "TESS", 2);
-
 }
 
 
@@ -90,11 +58,7 @@ void CUSatelliteNetwork::loadDefaultSetup(){
  */
 CUSatellite* CUSatelliteNetwork::searchForSatellite(string satelliteName){
     // TODO
-    CUSatellite* node = head;        
-    while(node != nullptr && node->name != satelliteName){
-        node = node->next;
-    }
-    return node;
+    return nullptr;
 }
 
 
@@ -105,24 +69,6 @@ CUSatellite* CUSatelliteNetwork::searchForSatellite(string satelliteName){
  */
 void CUSatelliteNetwork::transmitInfo(string receiver) {
     // TODO
-    if(head == nullptr) {
-        cout << "Empty list" <<endl;
-        return;
-    }
-    if(searchForSatellite(receiver) == nullptr){
-        cout<<"Satellite not found" <<endl;
-        return;
-    }
-    CUSatellite* node = head;
-    while(node != nullptr) {
-        node->message = "distance of " +node->name +" from earth is " +to_string(node->distanceFromEarth);
-        node->numberMessages++;
-        cout<<node->name<< " [# messages received: " << node->numberMessages<<"] received: " << node->message <<endl;
-        if(node->name == receiver) {
-            break;
-        }
-        node=node->next;
-    }
 }
 
 /*
